@@ -12,12 +12,15 @@ const userSchema = new mongoose.Schema({
     email:{
         type:String,
         required:true,
-        unique:true
+        unique:true,
+        lowercase:true,
+        trim:true
     },
     role:{
         type:String,
-        enum:['user','admin']
+        enum:['user','admin'],
+        default:'user'
     }
 },{timestamps:true})
 
-export const userModel =  mongoose.Model('User',userSchema)
+export const userModel =  mongoose.model('User',userSchema)
